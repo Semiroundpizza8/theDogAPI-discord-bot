@@ -1,4 +1,6 @@
+# Heavily Edited version of https://github.com/AdenForshaw/theDogAPI-discord-bot for academic purposes.
 # A Doggy Discord Bot
+
 Example of how to make a Discord bot using theDogAPI.com or theCatAPI.com in NodeJs. Simple app you can experiment with yourself.
 An issues hit me up - http://twitter.com/adenforshaw
 
