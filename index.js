@@ -2,7 +2,7 @@
 require('dotenv').config()
 
 const Discord = require('discord.js');
-const { getDogImage } = require('./utilities');
+const dogAPI = require('./dogAPI');
 
 // Discord connection code ---
 const client = new Discord.Client();
@@ -17,13 +17,17 @@ client.on('message' ,async message => {
 
   try {
     // Grab the image from the dog API    
-    var dogInfo = await getDogImage(message.author.username);
+    var dogInfo = await dogAPI.getDog(
+      message.author.username,
+      process.env.DOG_API_URL,
+      process.env.DOG_API_KEY
+    );
 
-    // get the Image, and first Breed from the returned object.
-    var breed = dogInfo.breeds[0];
     
     // Send a formatted message to the discord channel
-    const messageText = `***${breed.name}*** \r *${breed.temperament}*`
+    var breed = dogInfo.breeds[0];
+    const messageText = `***${breed.name}*** \r *${breed.temperament}*`;
+    
     message.channel.send(
       messageText,
       { files: [dogInfo.url] }
@@ -41,13 +45,3 @@ client.on('error', console.log);
 
 // Create bot
 client.login(process.env.DISCORD_TOKEN);
-
-
-
-    // console.log({
-    //   image,
-    //   breed
-    // })
-
-    // console.log("message processed", "showing", breed);
-    // use the *** to make text bold, and * to make italic
