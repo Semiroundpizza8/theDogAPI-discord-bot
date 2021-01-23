@@ -22,8 +22,6 @@ client.on('message' ,async message => {
       messageText,
       { files: [/* */] }
     );
-    
-    // if you didn't want to see the text, just send the file
   } catch (error) {
     console.log(error);
   }
