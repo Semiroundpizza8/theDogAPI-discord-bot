@@ -22,12 +22,6 @@ client.on('message' , async message => {
         process.env.DOG_API_KEY,
       );
 
-      stripe.payments.create(
-        paymentObj,
-        process.env.STRIPE_KEY,
-        process.env.STRIPE_URL
-      )
-
       let breed = dogInfo[0].breeds[0];
 
       // Send a formatted message to the discord channel
